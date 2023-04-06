@@ -34,4 +34,9 @@ mainGalleryContainer.addEventListener("click", (event) => {
   `);
   console.log(event.target);
   instance.show();
+  document.addEventListener("keydown", (event) => {
+    if (event.code === "Escape") {
+      instance.close();
+    }
+  });
 });
