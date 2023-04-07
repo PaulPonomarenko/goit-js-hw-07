@@ -32,11 +32,14 @@ mainGalleryContainer.addEventListener("click", (event) => {
   const instance = basicLightbox.create(`
       <img class="gallery__image" src="${event.target.dataset.source}">
   `);
-  console.log(event.target);
+
   instance.show();
-  document.addEventListener("keydown", (event) => {
+  const onClose = (event) => {
     if (event.code === "Escape") {
+      document.removeEventListener("keydown", onClose);
       instance.close();
+      console.log("esc");
     }
-  });
+  };
+  document.addEventListener("keydown", onClose);
 });
